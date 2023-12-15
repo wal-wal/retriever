@@ -1,8 +1,8 @@
 package presentation
 
 import (
-	"retriever/application/domain/mantra/dto/response"
-	"retriever/application/domain/mantra/use_case"
+	"application/domain/mantra/dto/response"
+	"application/domain/mantra/use_case"
 )
 
 type MantraPortImpl struct {

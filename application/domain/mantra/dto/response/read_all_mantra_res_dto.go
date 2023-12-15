@@ -1,6 +1,6 @@
 package response
 
-import "retriever/application/domain/mantra/entity"
+import "application/domain/mantra/entity"
 
 type ReadAllMantraResDTO struct {
 	Id      int

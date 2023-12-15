@@ -1,8 +1,8 @@
 package use_case
 
 import (
-	"retriever/application/domain/mantra/dto/response"
-	"retriever/application/port/secondary_port"
+	"application/domain/mantra/dto/response"
+	"application/port/secondary_port"
 	"sort"
 )
 
