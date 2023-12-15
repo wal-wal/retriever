@@ -4,8 +4,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"retriever/application/domain/mantra/entity"
 	uc "retriever/application/domain/mantra/use_case"
-	repo "retriever/persistence/secondary_adapter/persistence"
-	ctrl "retriever/presentation/primary_adapter/presentation"
+	repo "retriever/persistence/persistence"
+	ctrl "retriever/presentation/presentation"
 )
 
 func main() {
