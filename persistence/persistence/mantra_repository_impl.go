@@ -1,7 +1,7 @@
 package persistence
 
 import (
-	"retriever/application/domain/mantra/entity"
+	"retriever/application_regercy/domain/mantra/entity"
 )
 
 type MantraRepositoryImpl struct {
