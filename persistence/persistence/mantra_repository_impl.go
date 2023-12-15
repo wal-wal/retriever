@@ -1,8 +1,6 @@
 package persistence
 
-import (
-	"retriever/application_regercy/domain/mantra/entity"
-)
+import "application/domain/mantra/entity"
 
 type MantraRepositoryImpl struct {
 	m map[int]entity.Mantra
