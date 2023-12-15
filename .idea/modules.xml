@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/application.iml" filepath="$PROJECT_DIR$/application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persistence.iml" filepath="$PROJECT_DIR$/persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/presentation.iml" filepath="$PROJECT_DIR$/presentation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/retriever.iml" filepath="$PROJECT_DIR$/.idea/retriever.iml" />
     </modules>
   </component>
