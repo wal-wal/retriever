@@ -20,7 +20,8 @@ func main() {
 	mantraRepository := persistence.New(m)
 	readAllMantraUseCase := use_case.NewReadAllMantrasUseCase(mantraRepository)
 	createMantraUseCase := use_case.NewCreateMantraUseCase(mantraRepository)
-	mantraController := presentation.New(*readAllMantraUseCase, *createMantraUseCase)
+	deleteMantraUseCase := use_case.NewDeleteMantraUseCase(mantraRepository)
+	mantraController := presentation.New(*readAllMantraUseCase, *createMantraUseCase, *deleteMantraUseCase)
 
 	mantra := app.Group("/mantra")
 	mantra.Get("/", func(ctx *fiber.Ctx) error {
@@ -31,6 +32,15 @@ func main() {
 		_ = ctx.BodyParser(dto)
 		err := mantraController.CreateMantra(*dto)
 		if err != nil { // 커스텀 에러 만들기
+			return ctx.SendStatus(500)
+		}
+		return ctx.SendStatus(201)
+	})
+
+	mantra.Delete("/:id", func(ctx *fiber.Ctx) error {
+		id := ctx.Params("id")
+		err := mantraController.DeleteMantra(uuid.MustParse(id))
+		if err != nil {
 			return ctx.SendStatus(500)
 		}
 		return ctx.SendStatus(201)
