@@ -1,12 +1,15 @@
 package persistence
 
-import "application/domain/mantra/entity"
+import (
+	"application/domain/mantra/entity"
+	"github.com/google/uuid"
+)
 
 type MantraRepositoryImpl struct {
-	m map[int]entity.Mantra
+	m map[uuid.UUID]entity.Mantra
 }
 
-func New(m map[int]entity.Mantra) *MantraRepositoryImpl {
+func New(m map[uuid.UUID]entity.Mantra) *MantraRepositoryImpl {
 	return &MantraRepositoryImpl{
 		m: m,
 	}
