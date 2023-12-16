@@ -22,11 +22,11 @@ func main() {
 	createMantraUseCase := use_case.NewCreateMantraUseCase(mantraRepository)
 	mantraController := presentation.New(*readAllMantraUseCase, *createMantraUseCase)
 
-	app.Get("/", func(ctx *fiber.Ctx) error {
+	mantra := app.Group("/mantra")
+	mantra.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.JSON(mantraController.ReadAllMantras())
 	})
-
-	app.Post("/", func(ctx *fiber.Ctx) error {
+	mantra.Post("/", func(ctx *fiber.Ctx) error {
 		dto := new(request.CreateMantraReqDTO) // 나중엔 이거도 분리하기
 		_ = ctx.BodyParser(dto)
 		err := mantraController.CreateMantra(*dto)
