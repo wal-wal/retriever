@@ -18,3 +18,8 @@ func (r *MantraRepositoryImpl) ReadAllMantras() (list []entity.Mantra) {
 	}
 	return list
 }
+
+func (r *MantraRepositoryImpl) CreateMantra(mantra entity.Mantra) error {
+	r.m[mantra.Id] = mantra
+	return nil
+}
