@@ -26,3 +26,8 @@ func (r *MantraRepositoryImpl) CreateMantra(mantra entity.Mantra) error {
 	r.m[mantra.Id] = mantra
 	return nil
 }
+
+func (r *MantraRepositoryImpl) DeleteMantra(id uuid.UUID) error {
+	delete(r.m, id)
+	return nil
+}
