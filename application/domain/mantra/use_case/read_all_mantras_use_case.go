@@ -23,7 +23,7 @@ func (r *ReadAllMantrasUseCase) Execute() (list []response.ReadAllMantraResDTO) 
 		list = append(list, *mantra)
 	}
 	sort.Slice(list, func(i, j int) bool {
-		return list[i].Id < list[j].Id
+		return list[i].CreatedAt.After(list[j].CreatedAt)
 	})
 	return list
 }
