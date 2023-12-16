@@ -4,4 +4,5 @@ import "application/domain/mantra/entity"
 
 type MantraRepository interface {
 	ReadAllMantras() []entity.Mantra
+	CreateMantra(mantra entity.Mantra) error
 }

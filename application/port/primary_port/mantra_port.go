@@ -1,7 +1,11 @@
 package primary_port
 
-import "retriever/application_regercy/domain/mantra/dto/response"
+import (
+	"application/domain/mantra/dto/request"
+	"application/domain/mantra/dto/response"
+)
 
 type MantraPort interface {
 	ReadAllMantras() []response.ReadAllMantraResDTO
+	CreateMantra(dto request.CreateMantraReqDTO) error
 }
