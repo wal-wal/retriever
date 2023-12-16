@@ -2,11 +2,12 @@ package response
 
 import (
 	"application/domain/mantra/entity"
+	"github.com/google/uuid"
 	"time"
 )
 
 type ReadAllMantraResDTO struct {
-	Id        int
+	Id        uuid.UUID
 	Content   string
 	Writer    string
 	CreatedAt time.Time
