@@ -1,15 +1,15 @@
 package use_case
 
 import (
-	"application/port/secondary_port"
+	"application/port/secondary"
 	"github.com/google/uuid"
 )
 
 type DeleteMantraUseCase struct {
-	repo secondary_port.MantraRepository
+	repo secondary.MantraSecondaryPort
 }
 
-func NewDeleteMantraUseCase(repo secondary_port.MantraRepository) *DeleteMantraUseCase {
+func NewDeleteMantraUseCase(repo secondary.MantraSecondaryPort) *DeleteMantraUseCase {
 	return &DeleteMantraUseCase{
 		repo: repo,
 	}

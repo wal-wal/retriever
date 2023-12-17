@@ -7,7 +7,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type MantraPortImpl struct {
+type MantraWebAdapter struct {
 	readAllMantrasUseCase use_case.ReadAllMantrasUseCase
 	createMantraUseCase   use_case.CreateMantraUseCase
 	deleteMantraUseCase   use_case.DeleteMantraUseCase
@@ -15,21 +15,21 @@ type MantraPortImpl struct {
 
 func New(readAllMantrasUseCase use_case.ReadAllMantrasUseCase,
 	createMantraUseCase use_case.CreateMantraUseCase,
-	deleteMantraUseCase use_case.DeleteMantraUseCase) *MantraPortImpl {
-	return &MantraPortImpl{
+	deleteMantraUseCase use_case.DeleteMantraUseCase) *MantraWebAdapter {
+	return &MantraWebAdapter{
 		readAllMantrasUseCase: readAllMantrasUseCase,
 		createMantraUseCase:   createMantraUseCase,
 		deleteMantraUseCase:   deleteMantraUseCase,
 	}
 }
-func (r *MantraPortImpl) ReadAllMantras() []response.ReadAllMantraResDTO {
+func (r *MantraWebAdapter) ReadAllMantras() []response.ReadAllMantraResDTO {
 	return r.readAllMantrasUseCase.Execute()
 }
 
-func (r *MantraPortImpl) CreateMantra(dto request.CreateMantraReqDTO) error {
+func (r *MantraWebAdapter) CreateMantra(dto request.CreateMantraReqDTO) error {
 	return r.createMantraUseCase.Execute(dto)
 }
 
-func (r *MantraPortImpl) DeleteMantra(id uuid.UUID) error {
+func (r *MantraWebAdapter) DeleteMantra(id uuid.UUID) error {
 	return r.deleteMantraUseCase.Execute(id)
 }

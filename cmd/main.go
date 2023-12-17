@@ -17,7 +17,7 @@ func main() {
 	m := make(map[uuid.UUID]entity.Mantra)
 	id := uuid.New()
 	m[id] = entity.Mantra{Id: id, Writer: "김철우", Content: "내 코드는 레거시 코드다", CreatedAt: t.Add(-time.Minute)}
-	mantraRepository := persistence.New(m)
+	mantraRepository := persistence.NewMantraPersistenceAdapter(m)
 	readAllMantraUseCase := use_case.NewReadAllMantrasUseCase(mantraRepository)
 	createMantraUseCase := use_case.NewCreateMantraUseCase(mantraRepository)
 	deleteMantraUseCase := use_case.NewDeleteMantraUseCase(mantraRepository)
