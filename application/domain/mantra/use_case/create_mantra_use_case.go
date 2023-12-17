@@ -9,10 +9,10 @@ import (
 )
 
 type CreateMantraUseCase struct {
-	repo secondary.MantraRepository
+	repo secondary.MantraSecondaryPort
 }
 
-func NewCreateMantraUseCase(repo secondary.MantraRepository) *CreateMantraUseCase {
+func NewCreateMantraUseCase(repo secondary.MantraSecondaryPort) *CreateMantraUseCase {
 	return &CreateMantraUseCase{
 		repo: repo,
 	}

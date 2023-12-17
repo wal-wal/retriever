@@ -6,10 +6,10 @@ import (
 )
 
 type DeleteMantraUseCase struct {
-	repo secondary.MantraRepository
+	repo secondary.MantraSecondaryPort
 }
 
-func NewDeleteMantraUseCase(repo secondary.MantraRepository) *DeleteMantraUseCase {
+func NewDeleteMantraUseCase(repo secondary.MantraSecondaryPort) *DeleteMantraUseCase {
 	return &DeleteMantraUseCase{
 		repo: repo,
 	}

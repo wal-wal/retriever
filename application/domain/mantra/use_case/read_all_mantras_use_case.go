@@ -7,10 +7,10 @@ import (
 )
 
 type ReadAllMantrasUseCase struct {
-	repo secondary.MantraRepository
+	repo secondary.MantraSecondaryPort
 }
 
-func NewReadAllMantrasUseCase(repo secondary.MantraRepository) *ReadAllMantrasUseCase {
+func NewReadAllMantrasUseCase(repo secondary.MantraSecondaryPort) *ReadAllMantrasUseCase {
 	return &ReadAllMantrasUseCase{
 		repo: repo,
 	}
