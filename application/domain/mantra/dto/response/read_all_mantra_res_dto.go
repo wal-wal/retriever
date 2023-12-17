@@ -13,7 +13,7 @@ type ReadAllMantraResDTO struct {
 	CreatedAt time.Time
 }
 
-func Init(e entity.Mantra) *ReadAllMantraResDTO {
+func NewReadAllMantraResDTO(e entity.Mantra) *ReadAllMantraResDTO {
 	return &ReadAllMantraResDTO{
 		Id:        e.Id,
 		Content:   e.Content,

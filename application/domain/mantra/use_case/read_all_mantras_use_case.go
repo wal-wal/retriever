@@ -19,7 +19,7 @@ func NewReadAllMantrasUseCase(repo secondary_port.MantraRepository) *ReadAllMant
 func (r *ReadAllMantrasUseCase) Execute() (list []response.ReadAllMantraResDTO) {
 	mantras := r.repo.ReadAllMantras()
 	for _, v := range mantras {
-		mantra := response.Init(v)
+		mantra := response.NewReadAllMantraResDTO(v)
 		list = append(list, *mantra)
 	}
 	sort.Slice(list, func(i, j int) bool {
