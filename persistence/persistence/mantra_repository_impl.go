@@ -5,29 +5,29 @@ import (
 	"github.com/google/uuid"
 )
 
-type MantraRepositoryImpl struct {
+type MantraPersistenceAdapter struct {
 	m map[uuid.UUID]entity.Mantra
 }
 
-func New(m map[uuid.UUID]entity.Mantra) *MantraRepositoryImpl {
-	return &MantraRepositoryImpl{
+func NewMantraPersistenceAdapter(m map[uuid.UUID]entity.Mantra) *MantraPersistenceAdapter {
+	return &MantraPersistenceAdapter{
 		m: m,
 	}
 }
 
-func (r *MantraRepositoryImpl) ReadAllMantras() (list []entity.Mantra) {
+func (r *MantraPersistenceAdapter) ReadAllMantras() (list []entity.Mantra) {
 	for _, v := range r.m {
 		list = append(list, v)
 	}
 	return list
 }
 
-func (r *MantraRepositoryImpl) CreateMantra(mantra entity.Mantra) error {
+func (r *MantraPersistenceAdapter) CreateMantra(mantra entity.Mantra) error {
 	r.m[mantra.Id] = mantra
 	return nil
 }
 
-func (r *MantraRepositoryImpl) DeleteMantra(id uuid.UUID) error {
+func (r *MantraPersistenceAdapter) DeleteMantra(id uuid.UUID) error {
 	delete(r.m, id)
 	return nil
 }
