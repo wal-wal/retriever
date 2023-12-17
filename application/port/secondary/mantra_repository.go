@@ -1,4 +1,4 @@
-package secondary_port
+package secondary
 
 import (
 	"application/domain/mantra/entity"

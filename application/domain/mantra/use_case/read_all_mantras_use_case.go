@@ -2,15 +2,15 @@ package use_case
 
 import (
 	"application/domain/mantra/dto/response"
-	"application/port/secondary_port"
+	"application/port/secondary"
 	"sort"
 )
 
 type ReadAllMantrasUseCase struct {
-	repo secondary_port.MantraRepository
+	repo secondary.MantraRepository
 }
 
-func NewReadAllMantrasUseCase(repo secondary_port.MantraRepository) *ReadAllMantrasUseCase {
+func NewReadAllMantrasUseCase(repo secondary.MantraRepository) *ReadAllMantrasUseCase {
 	return &ReadAllMantrasUseCase{
 		repo: repo,
 	}

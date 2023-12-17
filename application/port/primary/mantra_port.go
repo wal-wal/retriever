@@ -1,4 +1,4 @@
-package primary_port
+package primary
 
 import (
 	"application/domain/mantra/dto/request"

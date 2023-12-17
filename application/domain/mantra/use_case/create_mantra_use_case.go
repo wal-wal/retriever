@@ -3,16 +3,16 @@ package use_case
 import (
 	"application/domain/mantra/dto/request"
 	"application/domain/mantra/entity"
-	"application/port/secondary_port"
+	"application/port/secondary"
 	"github.com/google/uuid"
 	"time"
 )
 
 type CreateMantraUseCase struct {
-	repo secondary_port.MantraRepository
+	repo secondary.MantraRepository
 }
 
-func NewCreateMantraUseCase(repo secondary_port.MantraRepository) *CreateMantraUseCase {
+func NewCreateMantraUseCase(repo secondary.MantraRepository) *CreateMantraUseCase {
 	return &CreateMantraUseCase{
 		repo: repo,
 	}
