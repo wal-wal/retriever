@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
-type MantraPort interface {
+type MantraPrimaryPort interface {
 	ReadAllMantras() []response.ReadAllMantraResDTO
 	CreateMantra(dto request.CreateMantraReqDTO) error
 	DeleteMantra(id uuid.UUID) error
