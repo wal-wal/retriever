@@ -15,11 +15,11 @@ func NewMantraPersistenceAdapter(m map[uuid.UUID]entity.Mantra) *MantraPersisten
 	}
 }
 
-func (r *MantraPersistenceAdapter) ReadAllMantras() (list []entity.Mantra) {
+func (r *MantraPersistenceAdapter) ReadAllMantras() (list []entity.Mantra, err error) {
 	for _, v := range r.m {
 		list = append(list, v)
 	}
-	return list
+	return list, nil
 }
 
 func (r *MantraPersistenceAdapter) CreateMantra(mantra entity.Mantra) error {
