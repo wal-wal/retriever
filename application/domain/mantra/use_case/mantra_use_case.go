@@ -24,7 +24,7 @@ func (r *MantraUseCase) CreateMantra(dto request.CreateMantraReqDTO) error {
 	return r.createMantraUC.Execute(dto)
 }
 
-func (r *MantraUseCase) ReadAllMantras() []response.ReadAllMantraResDTO {
+func (r *MantraUseCase) ReadAllMantras() ([]response.ReadAllMantraResDTO, error) {
 	return r.readAllMantraUC.Execute()
 }
 

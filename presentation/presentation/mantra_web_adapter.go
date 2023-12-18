@@ -18,7 +18,11 @@ func New(mantraPort primary.MantraPrimaryPort) *MantraWebAdapter {
 }
 
 func (r *MantraWebAdapter) ReadAllMantras(ctx *fiber.Ctx) error {
-	return ctx.JSON(r.mantraPort.ReadAllMantras())
+	mantras, err := r.mantraPort.ReadAllMantras()
+	if err != nil {
+		return ctx.Status(500).SendString(err.Error())
+	}
+	return ctx.JSON(mantras)
 }
 
 func (r *MantraWebAdapter) CreateMantra(ctx *fiber.Ctx) error {
