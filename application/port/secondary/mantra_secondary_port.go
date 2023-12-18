@@ -6,7 +6,7 @@ import (
 )
 
 type MantraSecondaryPort interface {
-	ReadAllMantras() []entity.Mantra
+	ReadAllMantras() ([]entity.Mantra, error)
 	CreateMantra(mantra entity.Mantra) error
 	DeleteMantra(id uuid.UUID) error
 }
