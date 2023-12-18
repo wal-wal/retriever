@@ -2,34 +2,40 @@ package presentation
 
 import (
 	"application/domain/mantra/dto/request"
-	"application/domain/mantra/dto/response"
-	"application/domain/mantra/use_case"
+	"application/port/primary"
+	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
 
 type MantraWebAdapter struct {
-	readAllMantrasUseCase use_case.ReadAllMantrasUseCase
-	createMantraUseCase   use_case.CreateMantraUseCase
-	deleteMantraUseCase   use_case.DeleteMantraUseCase
+	mantraPort primary.MantraPrimaryPort
 }
 
-func New(readAllMantrasUseCase use_case.ReadAllMantrasUseCase,
-	createMantraUseCase use_case.CreateMantraUseCase,
-	deleteMantraUseCase use_case.DeleteMantraUseCase) *MantraWebAdapter {
+func New(mantraPort primary.MantraPrimaryPort) *MantraWebAdapter {
 	return &MantraWebAdapter{
-		readAllMantrasUseCase: readAllMantrasUseCase,
-		createMantraUseCase:   createMantraUseCase,
-		deleteMantraUseCase:   deleteMantraUseCase,
+		mantraPort: mantraPort,
 	}
 }
-func (r *MantraWebAdapter) ReadAllMantras() []response.ReadAllMantraResDTO {
-	return r.readAllMantrasUseCase.Execute()
+
+func (r *MantraWebAdapter) ReadAllMantras(ctx *fiber.Ctx) error {
+	return ctx.JSON(r.mantraPort.ReadAllMantras())
 }
 
-func (r *MantraWebAdapter) CreateMantra(dto request.CreateMantraReqDTO) error {
-	return r.createMantraUseCase.Execute(dto)
+func (r *MantraWebAdapter) CreateMantra(ctx *fiber.Ctx) error {
+	dto := new(request.CreateMantraReqDTO)
+	_ = ctx.BodyParser(dto)
+	err := r.mantraPort.CreateMantra(*dto)
+	if err != nil {
+		return ctx.SendStatus(500)
+	}
+	return ctx.SendStatus(201)
 }
 
-func (r *MantraWebAdapter) DeleteMantra(id uuid.UUID) error {
-	return r.deleteMantraUseCase.Execute(id)
+func (r *MantraWebAdapter) DeleteMantra(ctx *fiber.Ctx) error {
+	id := ctx.Params("id")
+	err := r.mantraPort.DeleteMantra(uuid.MustParse(id))
+	if err != nil {
+		return ctx.SendStatus(500)
+	}
+	return ctx.SendStatus(201)
 }
