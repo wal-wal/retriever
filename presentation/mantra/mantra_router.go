@@ -1,15 +1,14 @@
-package router
+package mantra
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"presentation/presentation"
 )
 
 type MantraRouter struct {
-	adapter presentation.MantraWebAdapter
+	adapter MantraWebAdapter
 }
 
-func NewMantraRouter(adapter presentation.MantraWebAdapter) *MantraRouter {
+func NewMantraRouter(adapter MantraWebAdapter) *MantraRouter {
 	return &MantraRouter{
 		adapter: adapter,
 	}

@@ -1,4 +1,4 @@
-package presentation
+package mantra
 
 import (
 	"application/domain/mantra/dto/request"
