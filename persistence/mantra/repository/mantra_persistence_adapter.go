@@ -1,4 +1,4 @@
-package persistence
+package repository
 
 import (
 	"application/domain/mantra/entity"
