@@ -1,4 +1,4 @@
-package entity
+package model
 
 import (
 	"github.com/google/uuid"
@@ -6,17 +6,17 @@ import (
 )
 
 type Mantra struct {
+	MantraId  uuid.UUID
 	Content   string
 	Writer    string
-	Id        uuid.UUID
 	CreatedAt time.Time
 }
 
-func NewMantra(Content string, Writer string, Id uuid.UUID, CreatedAt time.Time) *Mantra {
+func NewMantra(MantraId uuid.UUID, Content string, Writer string, CreatedAt time.Time) *Mantra {
 	return &Mantra{
+		MantraId:  MantraId,
 		Content:   Content,
 		Writer:    Writer,
-		Id:        Id,
 		CreatedAt: CreatedAt,
 	}
 }
