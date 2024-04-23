@@ -1,12 +1,12 @@
 package secondary
 
 import (
-	"application/domain/mantra/entity"
+	"application/domain/mantra/model"
 	"github.com/google/uuid"
 )
 
 type MantraSecondaryPort interface {
-	ReadAllMantras() ([]entity.Mantra, error)
-	CreateMantra(mantra entity.Mantra) error
-	DeleteMantra(id uuid.UUID) error
+	ReadAllMantras() ([]model.Mantra, error)
+	CreateMantra(mantra model.Mantra) error
+	DeleteMantra(MantraId uuid.UUID) error
 }

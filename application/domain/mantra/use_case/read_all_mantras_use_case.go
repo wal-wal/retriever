@@ -21,6 +21,9 @@ func (r *ReadAllMantrasUseCase) Execute() (list []response.ReadAllMantraResDTO, 
 	if err != nil {
 		return nil, err
 	}
+	if mantras == nil {
+		return []response.ReadAllMantraResDTO{}, err
+	}
 	for _, v := range mantras {
 		mantra := response.NewReadAllMantraResDTO(v)
 		list = append(list, *mantra)

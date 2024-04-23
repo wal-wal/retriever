@@ -1,21 +1,20 @@
 package response
 
 import (
-	"application/domain/mantra/entity"
-	"github.com/google/uuid"
+	"application/domain/mantra/model"
 	"time"
 )
 
 type ReadAllMantraResDTO struct {
-	Id        uuid.UUID
-	Content   string
-	Writer    string
-	CreatedAt time.Time
+	MantraId  string    `json:"mantra_id"`
+	Content   string    `json:"content"`
+	Writer    string    `json:"writer"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
-func NewReadAllMantraResDTO(e entity.Mantra) *ReadAllMantraResDTO {
+func NewReadAllMantraResDTO(e model.Mantra) *ReadAllMantraResDTO {
 	return &ReadAllMantraResDTO{
-		Id:        e.Id,
+		MantraId:  e.MantraId.String(),
 		Content:   e.Content,
 		Writer:    e.Writer,
 		CreatedAt: e.CreatedAt,
