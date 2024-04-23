@@ -2,7 +2,7 @@ package use_case
 
 import (
 	"application/domain/mantra/dto/request"
-	"application/domain/mantra/entity"
+	"application/domain/mantra/model"
 	"application/port/secondary"
 	"github.com/google/uuid"
 	"time"
@@ -19,7 +19,7 @@ func NewCreateMantraUseCase(repo secondary.MantraSecondaryPort) *CreateMantraUse
 }
 
 func (r *CreateMantraUseCase) Execute(dto request.CreateMantraReqDTO) error {
-	mantra := entity.NewMantra(dto.Content, dto.Writer, uuid.New(), time.Now())
+	mantra := model.NewMantra(uuid.New(), dto.Content, dto.Writer, time.Now())
 	err := r.repo.CreateMantra(*mantra)
 	if err != nil {
 		return err
