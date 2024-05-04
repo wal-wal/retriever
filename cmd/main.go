@@ -1,6 +1,7 @@
 package main
 
 import (
+	use_case2 "application/domain/auth/use_case"
 	"application/domain/mantra/use_case"
 	useCase2 "application/domain/user/use_case"
 	"database/sql"
@@ -9,6 +10,7 @@ import (
 	"os"
 	repository2 "persistence/mantra/repository"
 	"persistence/user/repository"
+	"presentation/auth"
 	"presentation/mantra"
 	presentation2 "presentation/user"
 )
@@ -37,5 +39,11 @@ func main() {
 	userWebAdapter := presentation2.NewUserWebAdapter(userUseCase)
 	userRouter := presentation2.NewUserRouter(*userWebAdapter)
 	userRouter.Initialize(app)
+
+	signInUseCase := use_case2.NewSignInUseCase(userRepository)
+	authUseCase := use_case2.NewAuthUseCase(*signInUseCase)
+	authWebAdapter := auth.NewAuthWebAdapter(authUseCase)
+	authRouter := auth.NewAuthRouter(*authWebAdapter)
+	authRouter.Initialize(app)
 	_ = app.Listen(":8080")
 }
