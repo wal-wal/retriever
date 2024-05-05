@@ -1,6 +1,6 @@
 package auth_use_case
 
-import auth_request "retriever-core/auth/dto/request"
+import "retriever-core/auth/dto/request"
 
 type AuthUseCase struct {
 	signInUC SignInUseCase

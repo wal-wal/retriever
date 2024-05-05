@@ -1,4 +1,4 @@
-package persistence_user
+package user_entity
 
 type UserEntity struct {
 	UserId   string `json:"user_id"`
