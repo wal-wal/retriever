@@ -16,16 +16,16 @@ func NewReadAllMantrasUseCase(repo mantra_secondary.MantraSecondaryPort) ReadAll
 	}
 }
 
-func (r *ReadAllMantrasUseCase) Execute() (list []mantra_response.ReadAllMantraResDTO, err error) {
+func (r *ReadAllMantrasUseCase) Execute() (list []mantra_response.ReadMantraResDTO, err error) {
 	mantras, err := r.repo.ReadAllMantras()
 	if err != nil {
 		return nil, err
 	}
 	if mantras == nil {
-		return []mantra_response.ReadAllMantraResDTO{}, err
+		return []mantra_response.ReadMantraResDTO{}, err
 	}
 	for _, v := range mantras {
-		mantra := mantra_response.NewReadAllMantraResDTO(v)
+		mantra := mantra_response.NewReadMantraResDTO(v)
 		list = append(list, *mantra)
 	}
 	sort.Slice(list, func(i, j int) bool {

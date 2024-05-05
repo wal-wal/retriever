@@ -43,3 +43,12 @@ func (r *MantraWebAdapter) DeleteMantra(ctx *fiber.Ctx) error {
 	}
 	return ctx.SendStatus(201)
 }
+
+func (r *MantraWebAdapter) ReadMantra(ctx *fiber.Ctx) error {
+	mantraId := ctx.Params("mantraId")
+	mantraResponse, err := r.mantraPort.ReadMantra(uuid.MustParse(mantraId))
+	if err != nil {
+		return ctx.Status(500).SendString(err.Error())
+	}
+	return ctx.Status(200).JSON(mantraResponse)
+}

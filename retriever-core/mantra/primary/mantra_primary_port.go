@@ -7,7 +7,9 @@ import (
 )
 
 type MantraPrimaryPort interface {
-	ReadAllMantras() ([]mantra_response.ReadAllMantraResDTO, error)
+	ReadAllMantras() ([]mantra_response.ReadMantraResDTO, error)
 	CreateMantra(dto mantra_request.CreateMantraReqDTO) error
 	DeleteMantra(id uuid.UUID) error
+
+	ReadMantra(mantraId uuid.UUID) (mantra_response.ReadMantraResDTO, error)
 }
