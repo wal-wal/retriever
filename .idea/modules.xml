@@ -6,6 +6,10 @@
       <module fileurl="file://$PROJECT_DIR$/persistence.iml" filepath="$PROJECT_DIR$/persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/presentation.iml" filepath="$PROJECT_DIR$/presentation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/retriever.iml" filepath="$PROJECT_DIR$/.idea/retriever.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retriever-core.iml" filepath="$PROJECT_DIR$/retriever-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retriever-infrastructure.iml" filepath="$PROJECT_DIR$/retriever-infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retriever-persistence.iml" filepath="$PROJECT_DIR$/retriever-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retriever-presentation.iml" filepath="$PROJECT_DIR$/retriever-presentation.iml" />
     </modules>
   </component>
 </project>
