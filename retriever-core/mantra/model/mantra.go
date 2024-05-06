@@ -7,16 +7,18 @@ import (
 
 type Mantra struct {
 	MantraId  uuid.UUID
+	Speaker   string
 	Content   string
-	Writer    string
 	CreatedAt time.Time
+	Writer    string
 }
 
-func NewMantra(MantraId uuid.UUID, Content string, Writer string, CreatedAt time.Time) *Mantra {
+func NewMantra(mantraId uuid.UUID, speaker string, content string, createdAt time.Time, writer string) *Mantra {
 	return &Mantra{
-		MantraId:  MantraId,
-		Content:   Content,
-		Writer:    Writer,
-		CreatedAt: CreatedAt,
+		MantraId:  mantraId,
+		Speaker:   speaker,
+		Content:   content,
+		CreatedAt: createdAt,
+		Writer:    writer,
 	}
 }

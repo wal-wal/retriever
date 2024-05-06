@@ -23,14 +23,25 @@ func (r *MantraRepository) ReadAllMantras() (list []mantra_entity.MantraEntity, 
 	}
 	mantraEntity := mantra_entity.MantraEntity{}
 	for rows.Next() {
-		err = rows.Scan(&mantraEntity.MantraId, &mantraEntity.Writer, &mantraEntity.Content, &mantraEntity.CreatedAt)
+		err = rows.Scan(&mantraEntity.MantraId,
+			&mantraEntity.Speaker,
+			&mantraEntity.Content,
+			&mantraEntity.CreatedAt,
+			&mantraEntity.Writer)
+
 		list = append(list, mantraEntity)
 	}
 	return list, nil
 }
 
-func (r *MantraRepository) CreateMantra(mantraEntity mantra_entity.MantraEntity) error {
-	_, err := r.db.Exec("insert into tbl_mantra values (?, ?, ?, ?)", mantraEntity.MantraId, mantraEntity.Writer, mantraEntity.Content, mantraEntity.CreatedAt)
+func (r *MantraRepository) CreateMantra(entity mantra_entity.MantraEntity) error {
+	_, err := r.db.Exec("insert into tbl_mantra values (?, ?, ?, ?, ?)",
+		entity.MantraId,
+		entity.Speaker,
+		entity.Content,
+		entity.CreatedAt,
+		entity.Writer)
+
 	return err
 }
 
@@ -40,6 +51,12 @@ func (r *MantraRepository) DeleteMantra(mantraId uuid.UUID) error {
 }
 
 func (r *MantraRepository) FindMantraById(mantraId uuid.UUID) (entity mantra_entity.MantraEntity, err error) {
-	err = r.db.QueryRow("select * from tbl_mantra where mantraId = ?", mantraId).Scan(&entity.MantraId, &entity.Content, &entity.Writer, &entity.CreatedAt)
+	err = r.db.QueryRow("select * from tbl_mantra where mantraId = ?", mantraId).Scan(
+		&entity.MantraId,
+		&entity.Speaker,
+		&entity.Content,
+		&entity.CreatedAt,
+		&entity.Writer)
+
 	return entity, err
 }

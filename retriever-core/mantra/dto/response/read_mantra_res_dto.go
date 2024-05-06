@@ -7,25 +7,25 @@ import (
 
 type ReadMantraResDTO struct {
 	MantraId  string    `json:"mantra_id"`
+	Speaker   string    `json:"speaker"`
 	Content   string    `json:"content"`
-	Writer    string    `json:"writer"`
 	CreatedAt time.Time `json:"created_at"`
 }
 
-func NewReadMantraResDTO(e mantra_model.Mantra) *ReadMantraResDTO {
+func NewReadMantraResDTO(model mantra_model.Mantra) *ReadMantraResDTO {
 	return &ReadMantraResDTO{
-		MantraId:  e.MantraId.String(),
-		Content:   e.Content,
-		Writer:    e.Writer,
-		CreatedAt: e.CreatedAt,
+		MantraId:  model.MantraId.String(),
+		Speaker:   model.Speaker,
+		Content:   model.Content,
+		CreatedAt: model.CreatedAt,
 	}
 }
 
-func (r *ReadMantraResDTO) Of(mantra mantra_model.Mantra) ReadMantraResDTO {
+func (r *ReadMantraResDTO) Of(model mantra_model.Mantra) ReadMantraResDTO {
 	return ReadMantraResDTO{
-		MantraId:  mantra.MantraId.String(),
-		Content:   mantra.Content,
-		Writer:    mantra.Writer,
-		CreatedAt: mantra.CreatedAt,
+		MantraId:  model.MantraId.String(),
+		Speaker:   model.Speaker,
+		Content:   model.Content,
+		CreatedAt: model.CreatedAt,
 	}
 }
