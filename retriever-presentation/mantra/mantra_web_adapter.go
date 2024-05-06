@@ -36,7 +36,7 @@ func (r *MantraWebAdapter) CreateMantra(ctx *fiber.Ctx) error {
 }
 
 func (r *MantraWebAdapter) DeleteMantra(ctx *fiber.Ctx) error {
-	id := ctx.Params("id")
+	id := ctx.Params("mantraId")
 	err := r.mantraPort.DeleteMantra(uuid.MustParse(id))
 	if err != nil {
 		return ctx.SendStatus(500)
