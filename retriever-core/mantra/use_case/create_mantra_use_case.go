@@ -19,7 +19,7 @@ func NewCreateMantraUseCase(repo mantra_secondary.MantraSecondaryPort) CreateMan
 }
 
 func (r *CreateMantraUseCase) Execute(dto mantra_request.CreateMantraReqDTO) error {
-	mantra := mantra_model.NewMantra(uuid.New(), dto.Content, dto.Writer, time.Now())
+	mantra := mantra_model.NewMantra(uuid.New(), dto.Speaker, dto.Content, time.Now(), dto.Writer)
 	err := r.repo.CreateMantra(*mantra)
 	if err != nil {
 		return err
