@@ -62,6 +62,15 @@ func (r *MantraWebAdapter) ReadMantra(ctx *fiber.Ctx) error {
 	return ctx.Status(200).JSON(mantraResponse)
 }
 
+func (r *MantraWebAdapter) ReadMantrasBySpeaker(ctx *fiber.Ctx) error {
+	speakerName := ctx.Query("speaker")
+	mantras, err := r.mantraPort.ReadMantrasBySpeaker(speakerName)
+	if err != nil {
+		return ctx.Status(500).JSON(map[string]string{"message": err.Error()})
+	}
+	return ctx.Status(200).JSON(mantras)
+}
+
 func createMantraReqDTOValidator(dto mantra_request.CreateMantraReqDTO) error {
 	if dto.Speaker == "" {
 		return errors.New("발언자를 입력해주세요")
