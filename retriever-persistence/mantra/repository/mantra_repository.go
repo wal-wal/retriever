@@ -2,6 +2,7 @@ package mantra_repository
 
 import (
 	"database/sql"
+	"errors"
 	"github.com/google/uuid"
 	"retriever-persistence/mantra/entity"
 )
@@ -59,4 +60,22 @@ func (r *MantraRepository) FindMantraById(mantraId uuid.UUID) (entity mantra_ent
 		&entity.Writer)
 
 	return entity, err
+}
+
+func (r *MantraRepository) FindMantrasBySpeaker(speakerName string) (entityList []mantra_entity.MantraEntity, err error) {
+	rows, err := r.db.Query("select * from tbl_mantra where speaker = ?", speakerName)
+	if err != nil {
+		return entityList, errors.New("망언 리스트를 불러오지 못했습니다")
+	}
+	for rows.Next() {
+		mantraEntity := mantra_entity.MantraEntity{}
+
+		err = rows.Scan(&mantraEntity.MantraId,
+			&mantraEntity.Speaker,
+			&mantraEntity.Content,
+			&mantraEntity.CreatedAt,
+			&mantraEntity.Writer)
+		entityList = append(entityList, mantraEntity)
+	}
+	return entityList, nil
 }

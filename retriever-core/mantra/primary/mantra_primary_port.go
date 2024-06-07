@@ -12,4 +12,6 @@ type MantraPrimaryPort interface {
 	DeleteMantra(id uuid.UUID) error
 
 	ReadMantra(mantraId uuid.UUID) (mantra_response.ReadMantraResDTO, error)
+
+	ReadMantrasBySpeaker(speakerName string) ([]mantra_response.ReadMantraResDTO, error)
 }

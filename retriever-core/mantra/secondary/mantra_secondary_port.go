@@ -13,4 +13,6 @@ type MantraSecondaryPort interface {
 	DeleteMantra(MantraId uuid.UUID) error
 
 	FindMantraById(mantraId uuid.UUID) (mantra_model.Mantra, error)
+
+	FindMantrasBySpeaker(speakerName string) (list []mantra_model.Mantra, err error)
 }

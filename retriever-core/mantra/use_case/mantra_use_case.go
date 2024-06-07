@@ -7,21 +7,24 @@ import (
 )
 
 type MantraUseCase struct {
-	readAllMantraUC ReadAllMantrasUseCase
-	createMantraUC  CreateMantraUseCase
-	deleteMantraUC  DeleteMantraUseCase
-	readMantraUC    ReadMantraUseCase
+	readAllMantraUC        ReadAllMantrasUseCase
+	createMantraUC         CreateMantraUseCase
+	deleteMantraUC         DeleteMantraUseCase
+	readMantraUC           ReadMantraUseCase
+	readMantrasBySpeakerUC ReadMantrasBySpeakerUseCase
 }
 
 func NewMantraUseCase(readAllMantraUseCase ReadAllMantrasUseCase,
 	createMantraUseCase CreateMantraUseCase,
 	deleteMantraUseCase DeleteMantraUseCase,
-	readMantraUseCase ReadMantraUseCase) *MantraUseCase {
+	readMantraUseCase ReadMantraUseCase,
+	readMantrasBySpeakerUseCase ReadMantrasBySpeakerUseCase) *MantraUseCase {
 	return &MantraUseCase{
-		readAllMantraUC: readAllMantraUseCase,
-		createMantraUC:  createMantraUseCase,
-		deleteMantraUC:  deleteMantraUseCase,
-		readMantraUC:    readMantraUseCase,
+		readAllMantraUC:        readAllMantraUseCase,
+		createMantraUC:         createMantraUseCase,
+		deleteMantraUC:         deleteMantraUseCase,
+		readMantraUC:           readMantraUseCase,
+		readMantrasBySpeakerUC: readMantrasBySpeakerUseCase,
 	}
 }
 
@@ -39,4 +42,8 @@ func (r *MantraUseCase) DeleteMantra(id uuid.UUID) error {
 
 func (r *MantraUseCase) ReadMantra(mantraId uuid.UUID) (mantra_response.ReadMantraResDTO, error) {
 	return r.readMantraUC.Execute(mantraId)
+}
+
+func (r *MantraUseCase) ReadMantrasBySpeaker(speakerName string) ([]mantra_response.ReadMantraResDTO, error) {
+	return r.readMantrasBySpeakerUC.Execute(speakerName)
 }

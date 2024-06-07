@@ -30,7 +30,8 @@ func (r *RetrieverRouter) Initialize(app *fiber.App) {
 
 	userRouter.Post("/sign-up", r.user.CreateUser)
 
-	mantraRouter.Get("/:mantraId", r.mantra.ReadMantra)
+	mantraRouter.Get("/mantraId/", r.mantra.ReadMantra)
+	mantraRouter.Get("/speaker/", r.mantra.ReadMantrasBySpeaker)
 	mantraRouter.Get("/", r.mantra.ReadAllMantras)
 	mantraRouter.Post("/", r.mantra.CreateMantra)
 	mantraRouter.Delete("/:id", r.mantra.DeleteMantra)

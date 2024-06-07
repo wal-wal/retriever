@@ -39,3 +39,14 @@ func (r *MantraPersistenceAdapter) FindMantraById(mantraId uuid.UUID) (mantra_mo
 	mantraEntity, err := r.repository.FindMantraById(mantraId)
 	return r.mapper.ToDomain(mantraEntity), err
 }
+
+func (r *MantraPersistenceAdapter) FindMantrasBySpeaker(speakerName string) (list []mantra_model.Mantra, err error) {
+	mantraEntities, err := r.repository.FindMantrasBySpeaker(speakerName)
+	if err != nil {
+		return nil, err
+	}
+	for _, v := range mantraEntities {
+		list = append(list, r.mapper.ToDomain(v))
+	}
+	return list, nil
+}
