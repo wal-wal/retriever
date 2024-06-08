@@ -34,7 +34,7 @@ func (r *RetrieverRouter) Initialize(app *fiber.App) {
 	mantraRouter.Get("/speaker/", r.mantra.ReadMantrasBySpeaker)
 	mantraRouter.Get("/", r.mantra.ReadAllMantras)
 	mantraRouter.Post("/", r.mantra.CreateMantra)
-	mantraRouter.Delete("/:id", r.mantra.DeleteMantra)
+	mantraRouter.Delete("/:mantraId", r.mantra.DeleteMantra)
 
 	authRouter.Post("/sign-in", r.auth.SignIn)
 }
