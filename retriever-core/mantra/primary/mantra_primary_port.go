@@ -14,4 +14,6 @@ type MantraPrimaryPort interface {
 	ReadMantra(mantraId uuid.UUID) (mantra_response.ReadMantraResDTO, error)
 
 	ReadMantrasBySpeaker(speakerName string) ([]mantra_response.ReadMantraResDTO, error)
+
+	ReadMantraByRandom() (mantra_response.ReadMantraResDTO, error)
 }

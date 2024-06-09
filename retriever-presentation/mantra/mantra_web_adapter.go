@@ -62,6 +62,14 @@ func (r *MantraWebAdapter) ReadMantra(ctx *fiber.Ctx) error {
 	return ctx.Status(200).JSON(mantraResponse)
 }
 
+func (r *MantraWebAdapter) ReadMantraByRandom(ctx *fiber.Ctx) error {
+	dto, err := r.mantraPort.ReadMantraByRandom()
+	if err != nil {
+		return ctx.Status(500).JSON(map[string]string{"message": err.Error()})
+	}
+	return ctx.Status(200).JSON(dto)
+}
+
 func (r *MantraWebAdapter) ReadMantrasBySpeaker(ctx *fiber.Ctx) error {
 	speakerName := ctx.Query("speaker")
 	mantras, err := r.mantraPort.ReadMantrasBySpeaker(speakerName)

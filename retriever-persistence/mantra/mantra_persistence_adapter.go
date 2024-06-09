@@ -50,3 +50,12 @@ func (r *MantraPersistenceAdapter) FindMantrasBySpeaker(speakerName string) (lis
 	}
 	return list, nil
 }
+
+func (r *MantraPersistenceAdapter) FindMantraByLimitAndOffset(limit int) (mantra_model.Mantra, error) {
+	entity, err := r.repository.FindMantraByLimitAndOffset(limit)
+	return r.mapper.ToDomain(entity), err
+}
+
+func (r *MantraPersistenceAdapter) GetTableSize() (size int, err error) {
+	return r.repository.GetTableSize()
+}

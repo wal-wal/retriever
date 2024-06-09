@@ -15,4 +15,6 @@ type MantraSecondaryPort interface {
 	FindMantraById(mantraId uuid.UUID) (mantra_model.Mantra, error)
 
 	FindMantrasBySpeaker(speakerName string) (list []mantra_model.Mantra, err error)
+	FindMantraByLimitAndOffset(limit int) (mantra_model.Mantra, error)
+	GetTableSize() (size int, err error)
 }

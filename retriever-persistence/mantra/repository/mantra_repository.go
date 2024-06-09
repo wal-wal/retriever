@@ -79,3 +79,18 @@ func (r *MantraRepository) FindMantrasBySpeaker(speakerName string) (entityList 
 	}
 	return entityList, nil
 }
+
+func (r *MantraRepository) FindMantraByLimitAndOffset(limit int) (entity mantra_entity.MantraEntity, err error) {
+	err = r.db.QueryRow("select * from tbl_mantra limit ?, 1", limit).Scan(
+		&entity.MantraId,
+		&entity.Speaker,
+		&entity.Content,
+		&entity.CreatedAt,
+		&entity.Writer)
+	return entity, err
+}
+
+func (r *MantraRepository) GetTableSize() (size int, err error) {
+	err = r.db.QueryRow("select count(*) as tbl_size from tbl_mantra").Scan(&size)
+	return size, err
+}
