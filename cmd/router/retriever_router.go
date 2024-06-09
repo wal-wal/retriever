@@ -32,6 +32,7 @@ func (r *RetrieverRouter) Initialize(app *fiber.App) {
 
 	mantraRouter.Get("/mantraId/", r.mantra.ReadMantra)
 	mantraRouter.Get("/speaker/", r.mantra.ReadMantrasBySpeaker)
+	mantraRouter.Get("/today/", r.mantra.ReadMantraByRandom)
 	mantraRouter.Get("/", r.mantra.ReadAllMantras)
 	mantraRouter.Post("/", r.mantra.CreateMantra)
 	mantraRouter.Delete("/:mantraId", r.mantra.DeleteMantra)

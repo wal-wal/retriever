@@ -37,12 +37,14 @@ func (r *DependencyInjector) PureDI() *router.RetrieverRouter {
 	deleteMantraUseCase := mantra_use_case.NewDeleteMantraUseCase(mantraPersistenceAdapter)
 	readMantraUseCase := mantra_use_case.NewReadMantraUseCase(mantraPersistenceAdapter)
 	readMantrasBySpeakerUseCase := mantra_use_case.NewReadMantrasBySpeakerUseCase(mantraPersistenceAdapter)
+	readMantraByRandomUseCase := mantra_use_case.NewReadMantraByRandomUseCase(mantraPersistenceAdapter)
 
 	mantraUseCase := mantra_use_case.NewMantraUseCase(readAllMantraUseCase,
 		createMantraUseCase,
 		deleteMantraUseCase,
 		readMantraUseCase,
-		readMantrasBySpeakerUseCase)
+		readMantrasBySpeakerUseCase,
+		readMantraByRandomUseCase)
 
 	createUserUseCase := user_use_case.NewCreateUserUseCase(userPersistenceAdapter)
 	userUseCase := user_use_case.NewUserUseCase(*createUserUseCase)

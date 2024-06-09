@@ -12,19 +12,22 @@ type MantraUseCase struct {
 	deleteMantraUC         DeleteMantraUseCase
 	readMantraUC           ReadMantraUseCase
 	readMantrasBySpeakerUC ReadMantrasBySpeakerUseCase
+	readMantraByRandomUC   ReadMantraByRandomUseCase
 }
 
 func NewMantraUseCase(readAllMantraUseCase ReadAllMantrasUseCase,
 	createMantraUseCase CreateMantraUseCase,
 	deleteMantraUseCase DeleteMantraUseCase,
 	readMantraUseCase ReadMantraUseCase,
-	readMantrasBySpeakerUseCase ReadMantrasBySpeakerUseCase) *MantraUseCase {
+	readMantrasBySpeakerUseCase ReadMantrasBySpeakerUseCase,
+	readMantraByRandomUseCase ReadMantraByRandomUseCase) *MantraUseCase {
 	return &MantraUseCase{
 		readAllMantraUC:        readAllMantraUseCase,
 		createMantraUC:         createMantraUseCase,
 		deleteMantraUC:         deleteMantraUseCase,
 		readMantraUC:           readMantraUseCase,
 		readMantrasBySpeakerUC: readMantrasBySpeakerUseCase,
+		readMantraByRandomUC:   readMantraByRandomUseCase,
 	}
 }
 
@@ -46,4 +49,8 @@ func (r *MantraUseCase) ReadMantra(mantraId uuid.UUID) (mantra_response.ReadMant
 
 func (r *MantraUseCase) ReadMantrasBySpeaker(speakerName string) ([]mantra_response.ReadMantraResDTO, error) {
 	return r.readMantrasBySpeakerUC.Execute(speakerName)
+}
+
+func (r *MantraUseCase) ReadMantraByRandom() (mantra_response.ReadMantraResDTO, error) {
+	return r.readMantraByRandomUC.Execute()
 }
